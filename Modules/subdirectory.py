@@ -9,7 +9,7 @@ def is_valid_url(url):
     """Check if the URL/domain is valid"""
     url_pattern = r'^(https?:\/\/)?([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}(\/)?$'
     if not url.startswith(('http://', 'https://')):
-        url = 'http://' + url
+        url = 'https://' + url
     return bool(re.match(url_pattern, url)), url
 
 def check_directory(base_url, directory):
