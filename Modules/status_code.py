@@ -113,7 +113,7 @@ def process_urls(file_path, num_threads, status_filter=None):
                     # Only add results that match the status filter (if provided)
                     if status_filter is None or str(result['status_code']) in status_filter:
                         results.append(result)
-                        print(f"Processed: {result['url']} - Status: {result['status_code']} - MATCH")
+                        print(f"Processed: {result['url']} - Status: {result['status_code']} - Content Length: {result['content_length']} - Title: {result['title']} - MATCH")
                     else:
                         print(f"Processed: {result['url']} - Status: {result['status_code']}")
 
@@ -143,7 +143,7 @@ def process_urls(file_path, num_threads, status_filter=None):
                     f"{result['url'][:50]:<50} | {result['status_code']:<15} | {result['content_length']:<15} | {result['title'][:50]}\n")
 
         print("\n" + "=" * 50)
-        print(f"Found {len(results)} URLs with the specified status code(s)")
+        print(f"Found {len(results)} URLs with the specified status code,content length,and title")
         print(f"Results saved to {output_file}")
 
     except Exception as e:
