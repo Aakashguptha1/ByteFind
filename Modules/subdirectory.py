@@ -8,7 +8,7 @@ import sys
 def is_valid_url(url):
     """Check if the URL/domain is valid"""
     url_pattern = r'^(https?:\/\/)?([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}(\/)?$'
-    if not url.startswith(('http://', 'https://')):
+    if not url.startswith(('http://','https://')):
         url = 'https://' + url
     return bool(re.match(url_pattern, url)), url
 
@@ -16,7 +16,7 @@ def check_directory(base_url, directory):
     """Check directory existence and HTTP status"""
     full_url = urljoin(base_url, directory)
     try:
-        response = requests.get(full_url, timeout=5, allow_redirects=False)
+        response = requests.get(full_url, timeout=5, allow_redirects=True)
         status_code = response.status_code
 
         # Modified result based on status code
